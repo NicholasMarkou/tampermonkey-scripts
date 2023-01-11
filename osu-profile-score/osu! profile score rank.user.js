@@ -19,7 +19,6 @@
 
 
     function getRank() {
-        console.log('Getting rank');
         let userId = window.location.href.substring(window.location.href.lastIndexOf('users/')+6);
         if (userId.includes('/')) userId = userId.substring(0,userId.lastIndexOf('/'));
 
