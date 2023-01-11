@@ -19,10 +19,20 @@
 
 
     function getRank() {
+
+        const modes = {
+            osu: 0,
+            taiko: 1,
+            fruits: 2,
+            mania: 3
+        }
+
         let userId = window.location.href.substring(window.location.href.lastIndexOf('users/')+6);
         if (userId.includes('/')) userId = userId.substring(0,userId.lastIndexOf('/'));
 
-        fetch('https://score.respektive.pw/u/'+userId)
+        let selectedMode = document.getElementsByClassName('game-mode-link game-mode-link--active')[0].getAttribute('data-mode');
+
+        fetch('https://score.respektive.pw/u/'+userId+'?m='+modes[selectedMode])
             .then(data => data.json())
             .then(data => {
             let rankPanel = document.getElementsByClassName('profile-detail__values')[0];
